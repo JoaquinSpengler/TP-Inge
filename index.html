@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Emprendimientos</title>
+    <link rel="stylesheet" href="index-styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="nav-link">Inicio</a>
+        <button class="register-btn" onclick="location.href='register.html'">Registrarse</button>
+    </header>
+    <main>
+        <section class="search-container">
+            <input type="text" class="search-bar" placeholder="Buscar emprendimientos...">
+        </section>
+        <section class="cards-container">
+            <div class="card" onclick="toggleCard(this)">
+                <h2>Emprendimiento 1</h2>
+                <p class="summary">Descripción breve del emprendimiento 1.</p>
+                <div class="extra-info">
+                    <p><strong>Dirección:</strong> Calle Falsa 123</p>
+                    <p><strong>Teléfono:</strong> 555-1234</p>
+                    <p><strong>Rubro:</strong> Tecnología</p>
+                    <p><strong>Descripción:</strong> Este es un emprendimiento dedicado a la venta de productos tecnológicos innovadores.</p>
+                </div>
+            </div>
+            <div class="card" onclick="toggleCard(this)">
+                <h2>Emprendimiento 2</h2>
+                <p class="summary">Descripción breve del emprendimiento 2.</p>
+                <div class="extra-info">
+                    <p><strong>Dirección:</strong> Calle Verdadera 456</p>
+                    <p><strong>Teléfono:</strong> 555-5678</p>
+                    <p><strong>Rubro:</strong> Alimentación</p>
+                    <p><strong>Descripción:</strong> Emprendimiento enfocado en productos alimenticios orgánicos y saludables.</p>
+                </div>
+            </div>
+            <div class="card" onclick="toggleCard(this)">
+                <h2>Emprendimiento 3</h2>
+                <p class="summary">Descripción breve del emprendimiento 3.</p>
+                <div class="extra-info">
+                    <p><strong>Dirección:</strong> Avenida Principal 789</p>
+                    <p><strong>Teléfono:</strong> 555-7890</p>
+                    <p><strong>Rubro:</strong> Moda</p>
+                    <p><strong>Descripción:</strong> Boutique de ropa y accesorios a la moda con diseños exclusivos.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function toggleCard(element) {
+            element.classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>
