@@ -27,6 +27,7 @@
             
             <label for="address">Dirección:</label>
             <input type="text" id="address" name="address" required>
+            <div id="user-address-validation-result"></div>
             
             <label>
                 <input type="checkbox" id="address-visible" name="address-visible">
@@ -47,8 +48,7 @@
             <div id="business-address-container" style="display: none;">
                 <label for="business-address">Dirección del Emprendimiento:</label>
                 <input type="text" id="business-address" name="business-address">
-                <button type="button" id="validate-address-btn">Validar</button>
-                <div id="address-validation-result"></div>
+                <div id="business-address-validation-result"></div>
             </div>
             
             <label for="business-category">Rubro:</label>
@@ -62,62 +62,91 @@
     </main>
 
     <script>
+        let isUserAddressValid = false;
+        let isBusinessAddressValid = false;
+
         document.getElementById('business-has-address').addEventListener('change', function() {
             const addressContainer = document.getElementById('business-address-container');
             if (this.checked) {
                 addressContainer.style.display = 'block';
             } else {
                 addressContainer.style.display = 'none';
+                isBusinessAddressValid = true; // No necesita validación si no tiene dirección
             }
         });
 
-        document.getElementById('validate-address-btn').addEventListener('click', function() {
-            const address = document.getElementById('business-address').value;
-            const resultContainer = document.getElementById('address-validation-result');
-            resultContainer.textContent = "Validando...";
-            if (address) {
-                const url = `https://servicios.usig.buenosaires.gob.ar/normalizar/?direccion=${encodeURIComponent(address)}`;
-                console.error(url);
+        function validateAddress(address, resultContainer, isBusiness) {
+            return new Promise((resolve, reject) => {
+                resultContainer.textContent = "Validando...";
+                if (address) {
+                    const url = `https://servicios.usig.buenosaires.gob.ar/normalizar/?direccion=${encodeURIComponent(address)}`;
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.direccionesNormalizadas.length > 1) {
+                                resultContainer.textContent = "Se encontró más de una dirección. Intente nuevamente.";
+                                resolve(false);
+                            } else {
+                                const direccion = data.direccionesNormalizadas[0];
+                                switch (direccion.tipo) {
+                                    case "calle_altura":
+                                        resultContainer.textContent = "Dirección válida: " + direccion.direccion;
+                                        resolve(true);
+                                        break;
+                                    case "calle_y_calle":
+                                        resultContainer.textContent = "Error al validar la dirección. La dirección es un cruce. Intente nuevamente.";
+                                        resolve(false);
+                                        break;
+                                    case "calle":
+                                        resultContainer.textContent = "Error al validar la dirección. La dirección no tiene altura. Intente nuevamente.";
+                                        resolve(false);
+                                        break;
+                                    default:
+                                        resultContainer.textContent = "Error al encontrar la dirección. Intente nuevamente.";
+                                        resolve(false);
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            resultContainer.textContent = "Error al validar la dirección. La dirección no existe. Intente nuevamente.";
+                            console.error("Error al normalizar la dirección:", error);
+                            resolve(false);
+                        });
+                } else {
+                    resultContainer.textContent = "Por favor, ingrese una dirección para validar.";
+                    resolve(false);
+                }
+            });
+        }
 
-                fetch(url)
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                        if (data.direccionesNormalizadas.length > 1) 
-                        {
-                            resultContainer.textContent = "Se encontró mas de una direccion. Intente nuevamente."; 
-                        } 
-                        else 
-                        {
-                            switch (data.direccionesNormalizadas[0].tipo){
-                                case "calle_altura":
-                                    resultContainer.textContent = "Direccion Válida";
-                                    break;
-                                case "calle_y_calle":
-                                    resultContainer.textContent = "Error al validar la dirección. La dirección es un cruce. Intente nuevamente.";
-                                    break;
-                                case "calle":
-                                    resultContainer.textContent = "Error al validar la dirección. La dirección no tiene altura. Intente nuevamente.";
-                                    break;
-                                default: 
-                                    resultContainer.textContent = "Error al encontrar la dirección. Intente nuevamente.";
-                            }      
-                        }
-                    })
-                    .catch(error => {
-                        resultContainer.textContent = "Error al validar la dirección. La dirección no existe. Intente nuevamente.";
-                        console.error("Error al normalizar la dirección:", error);
-                    });
-            } else {
-                resultContainer.textContent = "Por favor, ingrese una dirección para validar.";
-            }
-        });
-
-        document.getElementById('business-form').addEventListener('submit', function(event) {
+        async function validateForms(event) {
             event.preventDefault();
-            console.log("Formulario enviado.");
-            // Aquí puedes manejar el envío del formulario
-        });
+            const userAddress = document.getElementById('address').value;
+            const userResultContainer = document.getElementById('user-address-validation-result');
+            isUserAddressValid = await validateAddress(userAddress, userResultContainer, false);
+
+            const businessAddressCheckbox = document.getElementById('business-has-address');
+            if (businessAddressCheckbox.checked) {
+                const businessAddress = document.getElementById('business-address').value;
+                const businessResultContainer = document.getElementById('business-address-validation-result');
+                isBusinessAddressValid = await validateAddress(businessAddress, businessResultContainer, true);
+            } else {
+                isBusinessAddressValid = true; // Si no tiene dirección, se considera válida
+            }
+
+            if (isUserAddressValid && isBusinessAddressValid) {
+                console.log("Formulario enviado.");
+                // Aquí puedes manejar el envío del formulario
+                // Por ejemplo:
+                //document.getElementById('user-form').submit();
+                //document.getElementById('business-form').submit();
+            } else {
+                alert("Por favor, asegúrese de que todas las direcciones sean válidas antes de enviar.");
+            }
+        }
+
+        document.getElementById('business-form').addEventListener('submit', validateForms);
+        document.getElementById('user-form').addEventListener('submit', validateForms);
     </script>
 </body>
 </html>
