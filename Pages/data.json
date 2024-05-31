@@ -2,36 +2,49 @@
     {
       "nombre": "Mustard",
       "descripcion": "Las mejores hamburguesas, hechas con Amor.",
-      "direccion": "España 649, San Miguel",
-      "posicion": [-34.5361969734694,-58.7107224346939],
+      "direccion_personal": "España 649, San Miguel",
+      "posicion_personal": [-34.5361969734694,-58.7107224346939],
+      "mostrarDireccion" : true,
+      "direccion_emprendimiento": "España 649, San Miguel",
+      "posicion_emprendimiento": [-34.5361969734694,-58.7107224346939],
       "telefono": "555-1234",
       "rubro": "Comida"
     },
     {
       "nombre": "Aprende de todo",
       "descripcion": "Clases particulares para alumnos de primaria",
-      "direccion": "Calle Verdadera 456",
+      "direccion_personal": "Convento de San Carlos 2371, Malvinas Argentinas",
+      "posicion_personal": [ -34.4903496798658,-58.7074810550336],
+      "mostrarDireccionPersonal" : false,
       "telefono": "555-5678",
       "rubro": "Educacion"
     },
     {
       "nombre": "Aesthetic",
       "descripcion": "La mejor ropa en todo San Miguel para todas las edades",
-      "direccion": "Avenida Principal 789",
+      "direccion_personal": "España 2000, San Miguel",
+      "posicion_personal": [-34.5460398, -58.7211845],
+      "mostrarDireccionPersonal" : true,
       "telefono": "555-7890",
       "rubro": "Moda"
     },
     {
       "nombre": "El sultan",
       "descripcion": "Comida arabe al alcance de la mano",
-      "direccion": "España 649, San Miguel",
+      "direccion_personal": "Yatasto 1497, Malvinas Argentinas",
+      "posicion_personal": [-34.4841024867347,-58.7227605357143],
+      "mostrarDireccionPersonal" : true,
+      "direccion_emprendimiento": "Yatasto 1497, Malvinas Argentinas",
+      "posicion_emprendimiento": [-34.4841024867347, -58.7227605357143],
       "telefono": "555-1234",
       "rubro": "Comida"
     },
     {
       "nombre": "Mateamigos",
       "descripcion": "Clases particulares de matematica para todos los niveles",
-      "direccion": "Calle Verdadera 456",
+      "direccion_personal": "España 649, San Miguel",
+      "posicion_personal": [-34.5361969734694,-58.7107224346939],
+      "mostrarDireccionPersonal" : false,
       "telefono": "555-5678",
       "rubro": "Educacion"
     }
