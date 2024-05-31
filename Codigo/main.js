@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <p><strong>Teléfono:</strong> ${emprendimiento.telefono}</p>
                         <p><strong>Rubro:</strong> ${emprendimiento.rubro}</p>
                     </div>
-                        ${emprendimiento.mostrarDireccion ? `<p><strong>Dirección:</strong> ${emprendimiento.direccion_emprendimiento}</p>` : ''}
+
                     ${emprendimiento.mostrarDireccion ? `<div class="location-icon"><img src="../Images/map.png" alt="Ubicación"></div>` : ''}
                      `;
                 card.addEventListener("click", function() {

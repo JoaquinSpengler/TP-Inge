@@ -6,7 +6,8 @@
       "direccion_emprendimiento": "España 649, San Miguel",
       "posicion_emprendimiento": [-34.5361969734694,-58.7107224346939],
       "telefono": "555-1234",
-      "rubro": "Comida"
+      "rubro": "Comida",
+      "horario_de_atencion": "9:00 a 20:00"
     },
     {
       "nombre": "Aprende de todo",
@@ -15,7 +16,8 @@
       "posicion_emprendimiento": [ -34.4903496798658,-58.7074810550336],
       "mostrarDireccion" : false,
       "telefono": "555-5678",
-      "rubro": "Educacion"
+      "rubro": "Educacion",
+      "horario_de_atencion": "9:00 a 20:00"
     },
     {
       "nombre": "Aesthetic",
@@ -24,7 +26,8 @@
       "posicion_emprendimiento": [-34.5460398, -58.7211845],
       "mostrarDireccion" : true,
       "telefono": "555-7890",
-      "rubro": "Moda"
+      "rubro": "Moda",
+      "horario_de_atencion": "9:00 a 20:00"
     },
     {
       "nombre": "El sultan",
@@ -33,7 +36,8 @@
       "direccion_emprendimiento": "Yatasto 1497, Malvinas Argentinas",
       "posicion_emprendimiento": [-34.4841024867347, -58.7227605357143],
       "telefono": "555-1234",
-      "rubro": "Comida"
+      "rubro": "Comida",
+      "horario_de_atencion": "9:00 a 20:00"
     },
     {
       "nombre": "Mateamigos",
@@ -42,6 +46,7 @@
       "posicion_emprendimiento": [-34.5361969734694,-58.7107224346939],
       "mostrarDireccion" : false,
       "telefono": "555-5678",
-      "rubro": "Educacion"
+      "rubro": "Educacion",
+      "horario_de_atencion": "9:00 a 20:00"
     }
   ]
