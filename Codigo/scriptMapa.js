@@ -23,6 +23,12 @@ function addMarkers(emprendimientos) {
     });
 }
 
+// Limpiar todos los marcadores del mapa
+function clearMarkers() {
+    markers.forEach(markerObj => map.removeLayer(markerObj.marker));
+    markers = [];
+}
+
 // Centrar mapa en una ubicación específica
 function setMapView(latLng) {
     map.setView(latLng, 19);
