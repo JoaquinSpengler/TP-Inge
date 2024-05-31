@@ -65,6 +65,7 @@ main {
 }
 
 .card {
+    position: relative; /* Establece la posición relativa para que los elementos absolutos se posicionen respecto a esta tarjeta */
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -74,6 +75,7 @@ main {
     max-height: 150px;
     overflow: hidden;
     cursor: pointer;
+    margin-bottom: 20px; /* Agregué un margen inferior para espaciar las tarjetas */
 }
 
 .card:hover {
@@ -104,28 +106,31 @@ main {
 }
 
 .map-placeholder {
-    width: 50%;
+    flex: 1;
     background-color: #e0e0e0;
-    padding: 1rem;
+    padding: 0;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-left: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 #map {
     width: 100%;
     height: 100%;
-    background-color: #d0d0d0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 5px;
-    text-align: center;
-    font-size: 1.2rem;
-    color: #666;
 }
 
-#contenedor-mapa { height: 180px; }
+.location-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.location-icon img {
+    width: 50px;  /* Tamaño del icono ajustado */
+    height: 50px;
+}
