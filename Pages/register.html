@@ -47,6 +47,8 @@
             <div id="business-address-container" style="display: none;">
                 <label for="business-address">Dirección del Emprendimiento:</label>
                 <input type="text" id="business-address" name="business-address">
+                <button type="button" id="validate-address-btn">Validar</button>
+                <div id="address-validation-result"></div>
             </div>
             
             <label for="business-category">Rubro:</label>
@@ -67,6 +69,54 @@
             } else {
                 addressContainer.style.display = 'none';
             }
+        });
+
+        document.getElementById('validate-address-btn').addEventListener('click', function() {
+            const address = document.getElementById('business-address').value;
+            const resultContainer = document.getElementById('address-validation-result');
+            resultContainer.textContent = "Validando...";
+            if (address) {
+                const url = `https://servicios.usig.buenosaires.gob.ar/normalizar/?direccion=${encodeURIComponent(address)}`;
+                console.error(url);
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.direccionesNormalizadas.length > 1) 
+                        {
+                            resultContainer.textContent = "Se encontró mas de una direccion. Intente nuevamente."; 
+                        } 
+                        else 
+                        {
+                            switch (data.direccionesNormalizadas[0].tipo){
+                                case "calle_altura":
+                                    resultContainer.textContent = "Direccion Válida";
+                                    break;
+                                case "calle_y_calle":
+                                    resultContainer.textContent = "Error al validar la dirección. La dirección es un cruce. Intente nuevamente.";
+                                    break;
+                                case "calle":
+                                    resultContainer.textContent = "Error al validar la dirección. La dirección no tiene altura. Intente nuevamente.";
+                                    break;
+                                default: 
+                                    resultContainer.textContent = "Error al encontrar la dirección. Intente nuevamente.";
+                            }      
+                        }
+                    })
+                    .catch(error => {
+                        resultContainer.textContent = "Error al validar la dirección. La dirección no existe. Intente nuevamente.";
+                        console.error("Error al normalizar la dirección:", error);
+                    });
+            } else {
+                resultContainer.textContent = "Por favor, ingrese una dirección para validar.";
+            }
+        });
+
+        document.getElementById('business-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            console.log("Formulario enviado.");
+            // Aquí puedes manejar el envío del formulario
         });
     </script>
 </body>
