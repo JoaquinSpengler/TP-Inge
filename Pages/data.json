@@ -1,26 +1,38 @@
 [
     {
-      "nombre": "Emprendimiento 1",
-      "descripcion": "Descripción breve del emprendimiento 1.",
-      "direccion": "Calle Falsa 129",
+      "nombre": "Mustard",
+      "descripcion": "Las mejores hamburguesas, hechas con Amor.",
+      "direccion": "España 649, San Miguel",
+      "posicion": [-34.5361969734694,-58.7107224346939],
       "telefono": "555-1234",
-      "rubro": "Tecnología",
-      "detalles": "Este es un emprendimiento dedicado a la venta de productos tecnológicos innovadores."
+      "rubro": "Comida"
     },
     {
-      "nombre": "Emprendimiento 2",
-      "descripcion": "Descripción breve del emprendimiento 2.",
+      "nombre": "Aprende de todo",
+      "descripcion": "Clases particulares para alumnos de primaria",
       "direccion": "Calle Verdadera 456",
       "telefono": "555-5678",
-      "rubro": "Alimentación",
-      "detalles": "Emprendimiento enfocado en productos alimenticios orgánicos y saludables."
+      "rubro": "Educacion"
     },
     {
-      "nombre": "Emprendimiento 3",
-      "descripcion": "Descripción breve del emprendimiento 3.",
+      "nombre": "Aesthetic",
+      "descripcion": "La mejor ropa en todo San Miguel para todas las edades",
       "direccion": "Avenida Principal 789",
       "telefono": "555-7890",
-      "rubro": "Moda",
-      "detalles": "Boutique de ropa y accesorios a la moda con diseños exclusivos."
+      "rubro": "Moda"
+    },
+    {
+      "nombre": "El sultan",
+      "descripcion": "Comida arabe al alcance de la mano",
+      "direccion": "España 649, San Miguel",
+      "telefono": "555-1234",
+      "rubro": "Comida"
+    },
+    {
+      "nombre": "Mateamigos",
+      "descripcion": "Clases particulares de matematica para todos los niveles",
+      "direccion": "Calle Verdadera 456",
+      "telefono": "555-5678",
+      "rubro": "Educacion"
     }
   ]

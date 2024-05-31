@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         <p><strong>Dirección:</strong> ${emprendimiento.direccion}</p>
                         <p><strong>Teléfono:</strong> ${emprendimiento.telefono}</p>
                         <p><strong>Rubro:</strong> ${emprendimiento.rubro}</p>
-                        <p><strong>Descripción:</strong> ${emprendimiento.detalles}</p>
-                    </div>
                 `;
                 card.addEventListener("click", function() {
                     toggleCard(this);
