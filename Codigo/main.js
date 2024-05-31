@@ -11,12 +11,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     <h2>${emprendimiento.nombre}</h2>
                     <p class="summary">${emprendimiento.descripcion}</p>
                     <div class="extra-info">
-                        <p><strong>Dirección:</strong> ${emprendimiento.direccion}</p>
+                        <p><strong>Dirección:</strong> ${emprendimiento.direccion_emprendimiento}</p>
                         <p><strong>Teléfono:</strong> ${emprendimiento.telefono}</p>
                         <p><strong>Rubro:</strong> ${emprendimiento.rubro}</p>
+                    </div>
                 `;
                 card.addEventListener("click", function() {
-                    toggleCard(this);
+                    toggleCard(this, emprendimiento);
                 });
                 cardsContainer.appendChild(card);
             });
@@ -24,10 +25,12 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error("Error al cargar los emprendimientos:", error);
         });
-
- 
 });
 
-function toggleCard(element) {
+function toggleCard(element, emprendimiento) {
     element.classList.toggle('expanded');
+    if (emprendimiento.mostrarDireccion) {
+        const latLng = emprendimiento.posicion_emprendimiento;
+        setMapView(latLng);
+    }
 }
