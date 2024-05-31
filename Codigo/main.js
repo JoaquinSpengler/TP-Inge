@@ -1,5 +1,3 @@
-// main.js
-
 document.addEventListener("DOMContentLoaded", function() {
     fetch("data.json")
         .then(response => response.json())
@@ -28,9 +26,10 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error("Error al cargar los emprendimientos:", error);
         });
+
+ 
 });
 
 function toggleCard(element) {
     element.classList.toggle('expanded');
 }
-

@@ -127,3 +127,5 @@ main {
     font-size: 1.2rem;
     color: #666;
 }
+
+#contenedor-mapa { height: 180px; }

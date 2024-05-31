@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Emprendimientos</title>
     <link rel="stylesheet" href="index-styles.css">
+     <!-- CSS MAPA -->
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
 </head>
 <body>
     <header>
@@ -22,13 +26,18 @@
             <aside class="map-placeholder">
                 <!-- Aquí irá el mapa -->
                 <div id="map">
-                    Placeholder para el mapa
                 </div>
             </aside>
         </section>
     </main>
-    <script src="../Codigo/main.js"> </script>
-    <script src="../Codigo/scriptMapa.js"> </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
+ 
+
+  <!-- JS MAPA -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+  <script src="../Codigo/main.js"> </script>
+  <script src="../Codigo/scriptMapa.js"> </script>
+
 </body>
 </html>
