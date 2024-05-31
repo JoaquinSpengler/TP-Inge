@@ -1,7 +1,7 @@
 // main.js
 
 document.addEventListener("DOMContentLoaded", function() {
-    fetch("emprendimientos.json")
+    fetch("data.json")
         .then(response => response.json())
         .then(data => {
             const cardsContainer = document.querySelector(".cards-container");
