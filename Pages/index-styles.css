@@ -53,29 +53,40 @@ main {
     box-sizing: border-box;
 }
 
-.content-container {
-    display: flex;
+.map-container {
+    width: 100%;
+    height: 500px;
+    background-color: #e0e0e0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
 }
 
 .cards-container {
-    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    overflow-y: auto;
 }
 
 .card {
-    position: relative; /* Establece la posición relativa para que los elementos absolutos se posicionen respecto a esta tarjeta */
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 1rem;
+    position: relative;
     transition: transform 0.3s ease, max-height 0.3s ease;
     max-height: 150px;
     overflow: hidden;
     cursor: pointer;
-    margin-bottom: 20px; /* Agregué un margen inferior para espaciar las tarjetas */
+    margin-bottom: 1rem;
 }
 
 .card:hover {
@@ -102,26 +113,8 @@ main {
 }
 
 .card.expanded {
-    max-height: 500px;
-}
-
-.map-placeholder {
-    flex: 1;
-    background-color: #e0e0e0;
-    padding: 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-left: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-#map {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
+    max-height: none;
+    overflow: visible;
 }
 
 .location-icon {
@@ -131,6 +124,17 @@ main {
 }
 
 .location-icon img {
-    width: 50px;  /* Tamaño del icono ajustado */
-    height: 50px;
+    width: 30px;
+    height: 30px;
+}
+
+.no-results {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
 }
